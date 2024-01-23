@@ -10,7 +10,7 @@ import pasa.cbentley.framework.coredraw.j2me.engine.GraphicsJ2ME;
 import pasa.cbentley.framework.coredraw.src4.interfaces.IGraphics;
 import pasa.cbentley.framework.coreui.j2me.ctx.CoreUiJ2MECtx;
 import pasa.cbentley.framework.coreui.src4.engine.CanvasHostAbstract;
-import pasa.cbentley.framework.coreui.src4.tech.ITechFeaturesUI;
+import pasa.cbentley.framework.coreui.src4.tech.ITechHostUI;
 
 /**
  * Basic bridge for classes that do not use GraphicsX
@@ -98,7 +98,7 @@ public class CanvasJ2ME extends CanvasHostAbstract {
    }
 
    public boolean setCanvasFeature(int feature, boolean mode) {
-      if (feature == ITechFeaturesUI.SUP_ID_27_FULLSCREEN) {
+      if (feature == ITechHostUI.SUP_ID_27_FULLSCREEN) {
          c.setFullScreenMode(mode);
          isFullscreen = mode;
          return true;
@@ -107,7 +107,7 @@ public class CanvasJ2ME extends CanvasHostAbstract {
    }
 
    public boolean isCanvasFeatureEnabled(int feature) {
-      if (feature == ITechFeaturesUI.SUP_ID_27_FULLSCREEN) {
+      if (feature == ITechHostUI.SUP_ID_27_FULLSCREEN) {
          return isFullscreen;
       }
       return false;

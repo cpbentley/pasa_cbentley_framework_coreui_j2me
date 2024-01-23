@@ -17,7 +17,8 @@ import pasa.cbentley.framework.coreui.src4.engine.KeyMapAbstract;
 import pasa.cbentley.framework.coreui.src4.engine.WrapperAbstract;
 import pasa.cbentley.framework.coreui.src4.interfaces.ICanvasOwner;
 import pasa.cbentley.framework.coreui.src4.interfaces.IHostGestures;
-import pasa.cbentley.framework.coreui.src4.tech.ITechCanvasHost;
+import pasa.cbentley.framework.coreui.src4.interfaces.IHostUI;
+import pasa.cbentley.framework.coreui.src4.tech.IBOCanvasHost;
 
 public class CoreUiJ2MECtx extends CoreUiCtx {
 
@@ -51,7 +52,7 @@ public class CoreUiJ2MECtx extends CoreUiCtx {
    }
 
    /**
-    * {@link ITechCanvasHost}
+    * {@link IBOCanvasHost}
     */
    public CanvasHostAbstract createCanvasClass(WrapperAbstract wrapper, ByteObject canvasTech) {
       CanvasJ2ME canvasHost = new CanvasJ2ME(this, canvasTech);
@@ -95,6 +96,11 @@ public class CoreUiJ2MECtx extends CoreUiCtx {
       MIDlet midlet = cdc.getMidlet();
       Display display = Display.getDisplay(midlet);
       display.callSerially(run);
+   }
+
+   public IHostUI getHostUI() {
+      // TODO Auto-generated method stub
+      return null;
    }
 
 }
