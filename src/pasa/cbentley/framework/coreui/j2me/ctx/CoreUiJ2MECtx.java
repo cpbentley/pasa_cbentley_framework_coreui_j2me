@@ -15,7 +15,7 @@ import pasa.cbentley.framework.coreui.src4.ctx.IConfigCoreUI;
 import pasa.cbentley.framework.coreui.src4.engine.CanvasHostAbstract;
 import pasa.cbentley.framework.coreui.src4.engine.KeyMapAbstract;
 import pasa.cbentley.framework.coreui.src4.engine.WrapperAbstract;
-import pasa.cbentley.framework.coreui.src4.interfaces.ICanvasOwner;
+import pasa.cbentley.framework.coreui.src4.interfaces.IWrapperManager;
 import pasa.cbentley.framework.coreui.src4.interfaces.IHostGestures;
 import pasa.cbentley.framework.coreui.src4.interfaces.IHostUI;
 import pasa.cbentley.framework.coreui.src4.tech.IBOCanvasHost;
@@ -54,12 +54,12 @@ public class CoreUiJ2MECtx extends CoreUiCtx {
    /**
     * {@link IBOCanvasHost}
     */
-   public CanvasHostAbstract createCanvasClass(WrapperAbstract wrapper, ByteObject canvasTech) {
+   public CanvasHostAbstract createCanvasHost(WrapperAbstract wrapper, ByteObject canvasTech) {
       CanvasJ2ME canvasHost = new CanvasJ2ME(this, canvasTech);
       return canvasHost;
    }
 
-   public ICanvasOwner createCanvasOwnerDefault() {
+   public IWrapperManager createCanvasOwnerDefault() {
       return null;
    }
 
