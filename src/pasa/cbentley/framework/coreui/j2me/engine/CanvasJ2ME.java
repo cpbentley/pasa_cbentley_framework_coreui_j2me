@@ -157,4 +157,6 @@ public class CanvasJ2ME extends CanvasHostAbstract {
       //only one position.. fullscreen by default
    }
 
+
+
 }
