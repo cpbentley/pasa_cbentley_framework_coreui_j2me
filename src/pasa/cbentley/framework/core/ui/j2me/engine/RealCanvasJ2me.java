@@ -1,11 +1,11 @@
-package pasa.cbentley.framework.coreui.j2me.engine;
+package pasa.cbentley.framework.core.ui.j2me.engine;
 
 import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.game.GameCanvas;
 
-import pasa.cbentley.framework.coredraw.j2me.engine.GraphicsJ2ME;
+import pasa.cbentley.framework.core.draw.j2me.engine.GraphicsJ2me;
+import pasa.cbentley.framework.core.ui.j2me.ctx.CoreUiJ2meCtx;
 import pasa.cbentley.framework.coredraw.src4.interfaces.IGraphics;
-import pasa.cbentley.framework.coreui.j2me.ctx.CoreUiJ2MECtx;
 
 /**
  * Basic bridge for classes that do not use GraphicsX
@@ -13,28 +13,39 @@ import pasa.cbentley.framework.coreui.j2me.ctx.CoreUiJ2MECtx;
  * @author Charles-Philip
  *
  */
-public class RealCanvasJ2ME extends GameCanvas {
+public class RealCanvasJ2me extends GameCanvas {
 
-   protected final CoreUiJ2MECtx     cac;
+   protected final CoreUiJ2meCtx cac;
 
-   private CanvasJ2ME canvas;
+   private CanvasJ2me            canvas;
 
    /**
     * Used by J2ME
     */
-   public RealCanvasJ2ME(CanvasJ2ME canvas, CoreUiJ2MECtx dd) {
+   public RealCanvasJ2me(CanvasJ2me canvas, CoreUiJ2meCtx dd) {
       super(false);
       this.cac = dd;
       this.canvas = canvas;
    }
 
-   public CanvasJ2ME getCanvasJ2ME() {
+   public void flushMyGraphics() {
+      flushGraphics();
+   }
+
+   public void flushMyGraphics(int x, int y, int w, int h) {
+      flushGraphics(x, y, w, h);
+   }
+
+   public CanvasJ2me getCanvasJ2ME() {
       return canvas;
    }
 
-   public void paint(Graphics g) {
-      IGraphics gx = new GraphicsJ2ME(g, cac.getCoreDrawJ2MECtx());
-      canvas.paintBridge(gx);
+   public Graphics getMyGraphics() {
+      return getGraphics();
+   }
+
+   protected void hideNotify() {
+      canvas.focusLostBridge();
    }
 
    protected void keyPressed(int keyCode) {
@@ -47,12 +58,17 @@ public class RealCanvasJ2ME extends GameCanvas {
       canvas.keyReleasedBridge(finalCode);
    }
 
-   protected void pointerPressed(int x, int y) {
-      canvas.fingerPressedBridge(x, y, 0, 0);
+   public void paint(Graphics g) {
+      IGraphics gx = new GraphicsJ2me(g, cac.getCoreDrawJ2MECtx());
+      canvas.paintBridge(gx);
    }
 
    protected void pointerDragged(int x, int y) {
       canvas.fingerMovedBridge(x, y, 0, 0);
+   }
+
+   protected void pointerPressed(int x, int y) {
+      canvas.fingerPressedBridge(x, y, 0, 0);
    }
 
    /**
@@ -60,22 +76,6 @@ public class RealCanvasJ2ME extends GameCanvas {
     */
    protected void pointerReleased(int x, int y) {
       canvas.fingerReleasedBridge(x, y, 0, 0);
-   }
-
-   protected void hideNotify() {
-      canvas.focusLostBridge();
-   }
-
-   public Graphics getMyGraphics() {
-      return getGraphics();
-   }
-
-   public void flushMyGraphics() {
-      flushGraphics();
-   }
-
-   public void flushMyGraphics(int x, int y, int w, int h) {
-      flushGraphics(x, y, w, h);
    }
 
    protected void showNotify() {

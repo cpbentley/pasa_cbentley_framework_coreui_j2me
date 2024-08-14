@@ -1,4 +1,4 @@
-package pasa.cbentley.framework.coreui.j2me.engine;
+package pasa.cbentley.framework.core.ui.j2me.engine;
 
 import javax.microedition.lcdui.Display;
 import javax.microedition.lcdui.Displayable;
@@ -6,11 +6,11 @@ import javax.microedition.lcdui.Graphics;
 import javax.microedition.midlet.MIDlet;
 
 import pasa.cbentley.byteobjects.src4.core.ByteObject;
-import pasa.cbentley.framework.coredraw.j2me.engine.GraphicsJ2ME;
+import pasa.cbentley.framework.core.draw.j2me.engine.GraphicsJ2me;
+import pasa.cbentley.framework.core.ui.j2me.ctx.CoreUiJ2meCtx;
+import pasa.cbentley.framework.core.ui.src4.engine.CanvasHostAbstract;
+import pasa.cbentley.framework.core.ui.src4.tech.ITechHostUI;
 import pasa.cbentley.framework.coredraw.src4.interfaces.IGraphics;
-import pasa.cbentley.framework.coreui.j2me.ctx.CoreUiJ2MECtx;
-import pasa.cbentley.framework.coreui.src4.engine.CanvasHostAbstract;
-import pasa.cbentley.framework.coreui.src4.tech.ITechHostUI;
 
 /**
  * Basic bridge for classes that do not use GraphicsX
@@ -18,22 +18,22 @@ import pasa.cbentley.framework.coreui.src4.tech.ITechHostUI;
  * @author Charles-Philip
  *
  */
-public class CanvasJ2ME extends CanvasHostAbstract {
+public class CanvasJ2me extends CanvasHostAbstract {
 
-   private RealCanvasJ2ME        c;
+   private RealCanvasJ2me        c;
 
    private boolean               isFullscreen;
 
-   protected final CoreUiJ2MECtx cuc;
+   protected final CoreUiJ2meCtx cuc;
 
    /**
     * Used by J2ME
     */
-   public CanvasJ2ME(CoreUiJ2MECtx dd, ByteObject tech) {
+   public CanvasJ2me(CoreUiJ2meCtx dd, ByteObject tech) {
       super(dd, tech);
       this.cuc = dd;
       //create the actual J2ME
-      c = new RealCanvasJ2ME(this, dd);
+      c = new RealCanvasJ2me(this, dd);
       //we don't know the size of it do we?
 
    }
@@ -119,7 +119,7 @@ public class CanvasJ2ME extends CanvasHostAbstract {
 
    public IGraphics getGraphics() {
       Graphics g = c.getMyGraphics();
-      GraphicsJ2ME gm = new GraphicsJ2ME(g, cuc.getCoreDrawJ2MECtx());
+      GraphicsJ2me gm = new GraphicsJ2me(g, cuc.getCoreDrawJ2MECtx());
       return gm;
    }
 
