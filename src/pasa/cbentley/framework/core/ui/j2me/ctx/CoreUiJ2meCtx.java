@@ -10,10 +10,10 @@ import pasa.cbentley.framework.core.ui.src4.ctx.CoreUiCtx;
 import pasa.cbentley.framework.core.ui.src4.ctx.IConfigCoreUi;
 import pasa.cbentley.framework.core.ui.src4.engine.CanvasHostAbstract;
 import pasa.cbentley.framework.core.ui.src4.engine.KeyMapAbstract;
-import pasa.cbentley.framework.core.ui.src4.engine.WrapperAbstract;
 import pasa.cbentley.framework.core.ui.src4.interfaces.IHostGestures;
 import pasa.cbentley.framework.core.ui.src4.interfaces.IWrapperManager;
 import pasa.cbentley.framework.core.ui.src4.tech.IBOCanvasHost;
+import pasa.cbentley.framework.core.ui.src4.wrapper.WrapperAbstract;
 
 public class CoreUiJ2meCtx extends CoreUiCtx {
 

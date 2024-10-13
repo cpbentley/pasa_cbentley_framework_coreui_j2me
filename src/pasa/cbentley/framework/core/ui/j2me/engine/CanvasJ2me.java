@@ -153,7 +153,7 @@ public class CanvasJ2me extends CanvasHostAbstract {
       return 0;
    }
 
-   public void setDefaultStartPosition() {
+   public void setStartPositionAndSize() {
       //only one position.. fullscreen by default
    }
 
